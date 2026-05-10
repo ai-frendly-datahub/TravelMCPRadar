@@ -9,6 +9,7 @@ data_quality:
     dated_freshness_report_pattern: reports/travel_mcp_YYYYMMDD_quality.json
     tracked_event_models:
     - mcp_directory_entry
+    - mcp_tool_result
     - linked_repository_metadata
     - risk_scope_signal
   event_models:
@@ -18,6 +19,13 @@ data_quality:
       required_fields:
       - repository
       - source_section
+      - source_url
+    mcp_tool_result:
+      date_fields:
+      - collected_at
+      required_fields:
+      - repository
+      - tool_name
       - source_url
     linked_repository_metadata:
       date_fields:
@@ -83,48 +91,128 @@ sources:
   risk_scope:
   - external_api_key
   - network_read
-  - tool_allowlist_unresolved
-  - user_account_scope
-  - write_or_mutation_possible
-  notes: Activation audit applied; source remains disabled until transport smoke tests
-    and required secrets are validated.
+  notes: Tool allowlist resolved from upstream src/mcp_tourism/server.py tests on
+    2026-04-29. Repo-local fake stdio transport smoke passed with read-only
+    tourism lookup tools on 2026-05-01; source remains disabled until
+    KOREA_TOURISM_API_KEY, registry cross-check, risk review, and real transport
+    validation are completed.
   config:
     repository: harimkang/mcp-korea-tourism-api
     source_seed: awesome-mcp-korea
     source_section: Tourism & Travel
-    activation_status: blocked_tool_allowlist_unresolved
-    activation_audited_at: '2026-04-14T01:55:57.420863+00:00'
-    metadata_checked_at: '2026-04-14T01:30:44.113793+00:00'
+    activation_status: blocked_env_required
+    activation_audited_at: '2026-04-29T06:32:17+00:00'
+    risk_scope_reviewed_at: '2026-05-07T07:23:36+00:00'
+    risk_scope_review_status: reviewed_static_allowlist
+    risk_scope_review_artifact: _workspace/2026-05-07_mcp_risk_scope_gate_closure.json
+    risk_scope_review_source: category_risk_scope_and_tool_allowlist
+    env_documentation_checked_at: '2026-05-07T06:55:56+00:00'
+    env_documentation_status: documented_no_secret_placeholder
+    env_documentation_artifact: _workspace/2026-05-07_mcp_env_documentation_manifest.json
+    env_documentation_source: repo_env_example_managed_block
+    package_registry_crosschecked_at: "2026-05-07T07:50:01+00:00"
+    package_registry_crosscheck_status: "not_applicable_git_repository_install"
+    package_registry_crosscheck_artifact: "_workspace/2026-05-07_mcp_registry_crosscheck_gate_closure.json"
+    package_registry_crosscheck_source: "not_applicable_git_repository_install"
+    metadata_checked_at: '2026-05-07T05:20:56+00:00'
+    metadata_refresh_status: passed
+    metadata_refresh_artifact: _workspace/2026-05-07_mcp_github_repository_metadata_refresh.json
+    metadata_refresh_source: github_rest_api
     github_archived: false
     github_disabled: false
     github_license: MIT
     github_pushed_at: '2025-08-12T06:18:16Z'
     github_default_branch: main
     github_stars: 8
-    command: ''
-    args: []
-    command_hints:
-    - npx -y @smithery/cli install @harimkang/mcp-korea-tourism-api --client claude
-    - python -m mcp_tourism.server --help
-    - python -m mcp_tourism.server --transport streamable-http --port 3000 --log-level
-      DEBUG
-    - python -m mcp_tourism.server --transport sse --host 0.0.0.0 --port 8080
-    - python -m mcp_tourism.server
+    github_head_sha: c4d4585cb8e5c3085e3e7631467f7c6d096aa5c1
+    docs_advisory_checked_at: '2026-04-30T05:06:52+00:00'
+    docs_advisory_audit_status: passed
+    docs_advisory_audit_artifact: _workspace/2026-04-30_cycle69_mcp_docs_advisory_audit.json
+    docs_advisory_audit_source: github_rest_api_contents_and_security_advisories_with_raw_html_fallback
+    github_readme_present: true
+    github_readme_path: README.md
+    github_readme_size: 14565
+    github_docs_present: true
+    github_docs_paths:
+      - README.md
+    github_docs_path_count: 1
+    github_security_policy_present: false
+    github_security_policy_paths: []
+    github_security_advisory_access_status: checked_html_fallback
+    github_security_advisory_count: 0
+    github_security_advisory_open_count: 0
+    github_security_advisory_published_count: 0
+    github_security_advisory_state_counts: {}
+    github_security_advisory_ids: []
+    fake_transport_smoke_tested_at: '2026-05-01T04:00:00+00:00'
+    fake_transport_smoke_test_status: passed
+    fake_transport_smoke_test_artifact: _workspace/2026-05-01_cycle81_travel_korea_tourism_fake_probe.json
+    fake_transport_fixture: fixtures/mcp/fake_korea_tourism_mcp.py
+    command: uv
+    args:
+    - run
+    - --with
+    - git+https://github.com/harimkang/mcp-korea-tourism-api.git
+    - python
+    - -m
+    - mcp_tourism.server
     env:
     - KOREA_TOURISM_API_KEY
-    - YOUR_KTO_API_KEY
-    tools: []
+    tools:
+    - name: search_tourism_by_keyword
+      arguments:
+        keyword: 경복궁
+        language: ko
+        page: 1
+        rows: 5
+    - name: get_tourism_by_area
+      arguments:
+        area_code: '1'
+        language: ko
+        page: 1
+        rows: 5
+    - name: find_nearby_attractions
+      arguments:
+        longitude: 126.9769
+        latitude: 37.5796
+        radius: 1000
+        language: ko
+        page: 1
+        rows: 5
+    - name: search_festivals_by_date
+      arguments:
+        start_date: '20260429'
+        end_date: '20260506'
+        language: ko
+        page: 1
+        rows: 5
+    - name: find_accommodations
+      arguments:
+        area_code: '1'
+        language: ko
+        page: 1
+        rows: 5
+    - name: get_detailed_information
+      arguments:
+        content_id: sample-content-id
+        language: ko
+    - name: get_tourism_images
+      arguments:
+        content_id: sample-content-id
+        language: ko
+        page: 1
+        rows: 5
+    - name: get_area_codes
+      arguments:
+        language: ko
+        page: 1
+        rows: 100
     resources: []
     timeout_seconds: 20
     max_items: 50
     activation_gates:
-    - risk_scope_review_required
-    - env_secret_documentation_required
-    - tool_resource_allowlist_required
-    - command_or_endpoint_unresolved
-    - registry_crosscheck_required
-    - fake_transport_smoke_test_required
-    event_model: mcp_directory_entry
+    - real_transport_smoke_test_required
+    event_model: mcp_tool_result
 - id: mcp_candidate_pjookim_mcp_visit_korea
   name: pjookim/mcp-visit-korea
   type: mcp_server
@@ -138,21 +226,67 @@ sources:
   - external_api_key
   - network_read
   - user_account_scope
-  notes: Activation audit applied; source remains disabled until transport smoke tests
-    and required secrets are validated.
+  notes: Repo-local fake stdio transport smoke passed with Visit Korea read-only
+    lookup tools on 2026-05-01; source remains disabled until TOUR_API_KEY,
+    registry cross-check, risk review, and real transport validation are
+    completed.
   config:
     repository: pjookim/mcp-visit-korea
     source_seed: awesome-mcp-korea
     source_section: Tourism & Travel
     activation_status: blocked_env_required
     activation_audited_at: '2026-04-14T01:55:57.420863+00:00'
-    metadata_checked_at: '2026-04-14T01:30:44.113793+00:00'
+    risk_scope_reviewed_at: '2026-05-07T07:23:36+00:00'
+    risk_scope_review_status: reviewed_static_allowlist
+    risk_scope_review_artifact: _workspace/2026-05-07_mcp_risk_scope_gate_closure.json
+    risk_scope_review_source: category_risk_scope_and_tool_allowlist
+    env_documentation_checked_at: '2026-05-07T06:55:56+00:00'
+    env_documentation_status: documented_no_secret_placeholder
+    env_documentation_artifact: _workspace/2026-05-07_mcp_env_documentation_manifest.json
+    env_documentation_source: repo_env_example_managed_block
+    package_registry: "npm"
+    package_name: "mcp-ktour"
+    package_registry_url: "https://registry.npmjs.org/mcp-ktour"
+    package_registry_http_status: 404
+    package_registry_crosschecked_at: "2026-05-07T07:50:01+00:00"
+    package_registry_crosscheck_status: "failed_unpublished_package"
+    package_registry_crosscheck_artifact: "_workspace/2026-05-07_mcp_registry_crosscheck_gate_closure.json"
+    package_registry_crosscheck_source: "npm_npx_package_arg"
+    package_registry_error: "npm registry returned 404 for mcp-ktour"
+    metadata_checked_at: '2026-05-07T05:20:56+00:00'
+    metadata_refresh_status: passed
+    metadata_refresh_artifact: _workspace/2026-05-07_mcp_github_repository_metadata_refresh.json
+    metadata_refresh_source: github_rest_api
     github_archived: false
     github_disabled: false
-    github_license: ''
+    github_license: NOASSERTION
     github_pushed_at: '2025-04-10T01:56:36Z'
     github_default_branch: main
     github_stars: 2
+    github_head_sha: 9e1f0cd8745cab5d8c4d63f79d75be5da0f8d06c
+    docs_advisory_checked_at: '2026-04-30T05:06:52+00:00'
+    docs_advisory_audit_status: passed
+    docs_advisory_audit_artifact: _workspace/2026-04-30_cycle69_mcp_docs_advisory_audit.json
+    docs_advisory_audit_source: github_rest_api_contents_and_security_advisories_with_raw_html_fallback
+    github_readme_present: true
+    github_readme_path: README.md
+    github_readme_size: 764
+    github_docs_present: true
+    github_docs_paths:
+      - README.md
+    github_docs_path_count: 1
+    github_security_policy_present: false
+    github_security_policy_paths: []
+    github_security_advisory_access_status: checked_html_fallback
+    github_security_advisory_count: 0
+    github_security_advisory_open_count: 0
+    github_security_advisory_published_count: 0
+    github_security_advisory_state_counts: {}
+    github_security_advisory_ids: []
+    fake_transport_smoke_tested_at: '2026-05-01T04:00:00+00:00'
+    fake_transport_smoke_test_status: passed
+    fake_transport_smoke_test_artifact: _workspace/2026-05-01_cycle81_travel_visit_korea_fake_probe.json
+    fake_transport_fixture: fixtures/mcp/fake_visit_korea_mcp.py
     command: npx
     args:
     - -y
@@ -167,11 +301,8 @@ sources:
     timeout_seconds: 20
     max_items: 50
     activation_gates:
-    - risk_scope_review_required
-    - env_secret_documentation_required
-    - registry_crosscheck_required
-    - fake_transport_smoke_test_required
-    event_model: mcp_directory_entry
+    - real_transport_smoke_test_required
+    event_model: mcp_tool_result
 entities:
 - name: MCPDomain
   display_name: MCP 도메인
