@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-visual-system="radar-unified-v2" data-visual-surface="report">
+<html lang="en" data-visual-system="radar-unified-v2" data-visual-surface="report" data-visual-page="daily-report">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,16 +12,27 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap">
   <style>
     :root {
-      --bg-page: #0b0b0f;
-      --bg-card: rgba(28, 26, 34, 0.86);
-      --bg-card-strong: rgba(36, 33, 43, 0.94);
-      --text-primary: #f4f4f7;
-      --text-secondary: rgba(244, 244, 247, 0.76);
-      --text-muted: rgba(244, 244, 247, 0.58);
-      --border-subtle: rgba(244, 244, 247, 0.14);
+      --vs-color-bg: #0b0b0f;
+      --vs-color-surface: rgba(28, 26, 34, 0.86);
+      --vs-color-surface-strong: rgba(36, 33, 43, 0.94);
+      --vs-color-text: #f4f4f7;
+      --vs-color-text-secondary: rgba(244, 244, 247, 0.76);
+      --vs-color-muted: rgba(244, 244, 247, 0.58);
+      --vs-color-border: rgba(244, 244, 247, 0.14);
+      --vs-color-accent: #33d6c5;
+      --vs-radius-sm: 6px;
+      --vs-radius-md: 8px;
+      --vs-font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --bg-page: var(--vs-color-bg);
+      --bg-card: var(--vs-color-surface);
+      --bg-card-strong: var(--vs-color-surface-strong);
+      --text-primary: var(--vs-color-text);
+      --text-secondary: var(--vs-color-text-secondary);
+      --text-muted: var(--vs-color-muted);
+      --border-subtle: var(--vs-color-border);
       --shadow-card: 0 14px 42px rgba(0,0,0,0.34);
       --shadow-card-hover: 0 18px 52px rgba(0,0,0,0.42);
-      --accent-teal: #33d6c5;
+      --accent-teal: var(--vs-color-accent);
       --accent-blue: #19b591;
       --accent-yellow: #f6c84c;
       --accent-indigo: #78a2ff;
@@ -31,11 +42,11 @@
       --error-bg: rgba(255, 91, 110, 0.13);
       --error-border: rgba(255, 91, 110, 0.28);
       --error-text: #ff9ca8;
-      --radius-sm: 6px;
-      --radius-md: 8px;
+      --radius-sm: var(--vs-radius-sm);
+      --radius-md: var(--vs-radius-md);
       --radius-full: 9999px;
       --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
-      --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-sans: var(--vs-font-sans);
     }
     * { box-sizing: border-box; }
     body {
@@ -249,7 +260,7 @@
     <header class="header">
       <div class="header__info">
         <h1 class="header__title">관광/여행 MCP 레이더</h1>
-        <div class="header__timestamp">Generated 2026-05-12T02:48:45.296107+00:00 UTC</div>
+        <div class="header__timestamp">Generated 2026-05-12T20:29:59.447349+00:00 UTC</div>
       </div>
       <div id="export-actions" class="export-actions"><button class="btn-export" id="btn-csv" onclick="exportCSV()">Export CSV</button></div>
     </header>
@@ -258,7 +269,7 @@
     <div class="summary-grid">
       <div class="stat-card">
         <div class="stat-card__label">Sources</div>
-        <div class="stat-card__value">1</div>
+        <div class="stat-card__value">3</div>
       </div>
       <div class="stat-card stat-card--blue">
         <div class="stat-card__label">Collected</div>
@@ -317,6 +328,48 @@
       </div>
     </div>
 
+    
+    <h2 class="section-title" id="mcp-quality-heading">MCP Source Quality</h2>
+    <section id="mcp-quality" class="quality-panel" aria-label="MCP source quality">
+      <div class="quality-grid">
+        <div class="quality-metric">
+          <span class="quality-metric__label">MCP candidates</span>
+          <span class="quality-metric__value">2</span>
+        </div>
+        <div class="quality-metric">
+          <span class="quality-metric__label">Enabled tools</span>
+          <span class="quality-metric__value">0</span>
+        </div>
+        <div class="quality-metric">
+          <span class="quality-metric__label">Tool results</span>
+          <span class="quality-metric__value">0</span>
+        </div>
+        <div class="quality-metric">
+          <span class="quality-metric__label">Metadata gaps</span>
+          <span class="quality-metric__value">0</span>
+        </div>
+        <div class="quality-metric">
+          <span class="quality-metric__label">Review items</span>
+          <span class="quality-metric__value">4</span>
+        </div>
+      </div>
+      
+      <p class="article-card__summary">travel_mcp treats the awesome-mcp-korea section as a T4 community directory seed. Repository metadata, API credential scope, and security context remain separate enrichment layers until archived, license, and advisory fields are collected.</p>
+      
+      
+      <ul class="quality-list">
+        
+        <li><strong>mcp_env_preflight_missing</strong> - harimkang/mcp-korea-tourism-api / harimkang/mcp-korea-tourism-api</li>
+        
+        <li><strong>mcp_candidate_disabled</strong> - harimkang/mcp-korea-tourism-api / harimkang/mcp-korea-tourism-api</li>
+        
+        <li><strong>mcp_env_preflight_missing</strong> - pjookim/mcp-visit-korea / pjookim/mcp-visit-korea</li>
+        
+        <li><strong>mcp_candidate_disabled</strong> - pjookim/mcp-visit-korea / pjookim/mcp-visit-korea</li>
+        
+      </ul>
+      
+    </section>
     
 
     <!-- Entity Hits -->
@@ -396,12 +449,12 @@
 
     <!-- Footer -->
     <footer class="footer">
-      Radar Report — generated 2026-05-12T02:48:45.296107+00:00 UTC
+      Radar Report — generated 2026-05-12T20:29:59.447349+00:00 UTC
     </footer>
   </div>
 
   <!-- Data blocks -->
-  <script id="articles-data" type="application/json">[{"collected_at": "2026-05-12T02:48:45.254042", "link": "https://github.com/pjookim/mcp-visit-korea", "matched_entities": {"Capability": ["\uc870\ud68c"], "MCPDomain": ["\uad00\uad11", "\uc9c0\uc5ed"], "ProjectHealth": ["mcp", "\uc11c\ubc84"], "RiskScope": ["\uc704\uce58"]}, "published": "2026-05-12T02:48:45.239978", "published_at": "2026-05-12T02:48:45.239978", "source": "awesome-mcp-korea Tourism \u0026 Travel", "summary": "\uc9c0\uc5ed\u00b7\ud0a4\uc6cc\ub4dc\u00b7\uc704\uce58 \uae30\ubc18\uc73c\ub85c \ud55c\uad6d \uad00\uad11 \uc815\ubcf4\ub97c \uc870\ud68c\ud558\ub294 MCP \uc11c\ubc84\uc785\ub2c8\ub2e4.", "title": "mcp-visit-korea"}, {"collected_at": "2026-05-12T02:48:45.254042", "link": "https://github.com/harimkang/mcp-korea-tourism-api", "matched_entities": {"Capability": ["\uac80\uc0c9"], "MCPDomain": ["tourism", "\uad00\uad11", "\uc219\ubc15", "\ub9db\uc9d1"], "ProjectHealth": ["mcp", "api", "\uc11c\ubc84"], "RiskScope": ["api"]}, "published": "2026-05-12T02:48:45.239960", "published_at": "2026-05-12T02:48:45.239960", "source": "awesome-mcp-korea Tourism \u0026 Travel", "summary": "\ud55c\uad6d\uad00\uad11\uacf5\uc0ac TourAPI\ub97c \uae30\ubc18\uc73c\ub85c \uad00\uad11\uc9c0\u00b7\ud589\uc0ac\u00b7\uc219\ubc15\u00b7\ub9db\uc9d1 \uc815\ubcf4\ub97c \uac80\uc0c9\ud558\ub294 MCP \uc11c\ubc84\uc785\ub2c8\ub2e4.", "title": "mcp-korea-tourism-api"}]</script>
+  <script id="articles-data" type="application/json">[{"collected_at": "2026-05-12T20:29:59.329899", "link": "https://github.com/pjookim/mcp-visit-korea", "matched_entities": {"Capability": ["\uc870\ud68c"], "MCPDomain": ["\uad00\uad11", "\uc9c0\uc5ed"], "ProjectHealth": ["mcp", "\uc11c\ubc84"], "RiskScope": ["\uc704\uce58"]}, "published": "2026-05-12T20:29:59.316458", "published_at": "2026-05-12T20:29:59.316458", "source": "awesome-mcp-korea Tourism \u0026 Travel", "summary": "\uc9c0\uc5ed\u00b7\ud0a4\uc6cc\ub4dc\u00b7\uc704\uce58 \uae30\ubc18\uc73c\ub85c \ud55c\uad6d \uad00\uad11 \uc815\ubcf4\ub97c \uc870\ud68c\ud558\ub294 MCP \uc11c\ubc84\uc785\ub2c8\ub2e4.", "title": "mcp-visit-korea"}, {"collected_at": "2026-05-12T20:29:59.329899", "link": "https://github.com/harimkang/mcp-korea-tourism-api", "matched_entities": {"Capability": ["\uac80\uc0c9"], "MCPDomain": ["tourism", "\uad00\uad11", "\uc219\ubc15", "\ub9db\uc9d1"], "ProjectHealth": ["mcp", "api", "\uc11c\ubc84"], "RiskScope": ["api"]}, "published": "2026-05-12T20:29:59.316447", "published_at": "2026-05-12T20:29:59.316447", "source": "awesome-mcp-korea Tourism \u0026 Travel", "summary": "\ud55c\uad6d\uad00\uad11\uacf5\uc0ac TourAPI\ub97c \uae30\ubc18\uc73c\ub85c \uad00\uad11\uc9c0\u00b7\ud589\uc0ac\u00b7\uc219\ubc15\u00b7\ub9db\uc9d1 \uc815\ubcf4\ub97c \uac80\uc0c9\ud558\ub294 MCP \uc11c\ubc84\uc785\ub2c8\ub2e4.", "title": "mcp-korea-tourism-api"}]</script>
   <script id="entities-data" type="application/json">{"Capability": 2, "MCPDomain": 6, "ProjectHealth": 5, "RiskScope": 2}</script>
 
   <!-- Chart.js: local first, CDN fallback -->

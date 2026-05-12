@@ -1,5 +1,5 @@
 {
-  "date": "2026-04-13",
+  "date": "2026-05-12",
   "category": "travel_mcp",
   "article_count": 2,
   "source_count": 1,
@@ -7,7 +7,7 @@
   "top_entities": [
     {
       "name": "MCPDomain",
-      "count": 12
+      "count": 6
     },
     {
       "name": "ProjectHealth",
@@ -25,5 +25,5 @@
   "sources": {
     "awesome-mcp-korea Tourism & Travel": 2
   },
-  "generated_at": "2026-04-13T11:10:35.968894+09:00"
+  "generated_at": "2026-05-12T20:29:59.462005+00:00"
 }
