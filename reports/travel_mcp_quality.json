@@ -1,6 +1,6 @@
 {
   "category": "travel_mcp",
-  "generated_at": "2026-05-13T18:53:31.735460+00:00",
+  "generated_at": "2026-05-14T02:30:08.083812+00:00",
   "scope_note": "travel_mcp treats the awesome-mcp-korea section as a T4 community directory seed. Repository metadata, API credential scope, and security context remain separate enrichment layers until archived, license, and advisory fields are collected.",
   "summary": {
     "total_sources": 3,
@@ -99,7 +99,7 @@
       "status": "fresh",
       "article_count": 2,
       "event_count": 2,
-      "latest_event_at": "2026-05-13T18:53:31.118302+00:00",
+      "latest_event_at": "2026-05-14T02:30:07.493047+00:00",
       "age_days": 0.0,
       "latest_title": "mcp-visit-korea",
       "latest_url": "https://github.com/pjookim/mcp-visit-korea",
@@ -155,7 +155,7 @@
         "status": "fresh",
         "repository": "harimkang/mcp-korea-tourism-api",
         "checked_at": "2026-05-07T05:20:56+00:00",
-        "age_days": 6.56,
+        "age_days": 6.88,
         "freshness_sla_days": 7.0,
         "missing_fields": [],
         "github_pushed_at": "2025-08-12T06:18:16Z",
@@ -227,7 +227,7 @@
         "status": "fresh",
         "repository": "pjookim/mcp-visit-korea",
         "checked_at": "2026-05-07T05:20:56+00:00",
-        "age_days": 6.56,
+        "age_days": 6.88,
         "freshness_sla_days": 7.0,
         "missing_fields": [],
         "github_pushed_at": "2025-04-10T01:56:36Z",
@@ -272,7 +272,7 @@
       "event_model": "mcp_directory_entry",
       "title": "mcp-visit-korea",
       "url": "https://github.com/pjookim/mcp-visit-korea",
-      "event_at": "2026-05-13T18:53:31.118302+00:00",
+      "event_at": "2026-05-14T02:30:07.493047+00:00",
       "mcp_domain": [
         "관광",
         "지역"
@@ -299,7 +299,7 @@
       "event_model": "risk_scope_signal",
       "title": "mcp-visit-korea",
       "url": "https://github.com/pjookim/mcp-visit-korea",
-      "event_at": "2026-05-13T18:53:31.118302+00:00",
+      "event_at": "2026-05-14T02:30:07.493047+00:00",
       "mcp_domain": [
         "관광",
         "지역"
@@ -326,7 +326,7 @@
       "event_model": "mcp_directory_entry",
       "title": "mcp-korea-tourism-api",
       "url": "https://github.com/harimkang/mcp-korea-tourism-api",
-      "event_at": "2026-05-13T18:53:31.118284+00:00",
+      "event_at": "2026-05-14T02:30:07.493032+00:00",
       "mcp_domain": [
         "tourism",
         "관광",
@@ -356,7 +356,7 @@
       "event_model": "risk_scope_signal",
       "title": "mcp-korea-tourism-api",
       "url": "https://github.com/harimkang/mcp-korea-tourism-api",
-      "event_at": "2026-05-13T18:53:31.118284+00:00",
+      "event_at": "2026-05-14T02:30:07.493032+00:00",
       "mcp_domain": [
         "tourism",
         "관광",
