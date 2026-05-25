@@ -1,0 +1,29 @@
+{
+  "date": "2026-05-25",
+  "category": "travel_mcp",
+  "article_count": 2,
+  "source_count": 1,
+  "matched_count": 2,
+  "top_entities": [
+    {
+      "name": "MCPDomain",
+      "count": 6
+    },
+    {
+      "name": "ProjectHealth",
+      "count": 5
+    },
+    {
+      "name": "Capability",
+      "count": 2
+    },
+    {
+      "name": "RiskScope",
+      "count": 2
+    }
+  ],
+  "sources": {
+    "awesome-mcp-korea Tourism & Travel": 2
+  },
+  "generated_at": "2026-05-25T18:22:27.053703+00:00"
+}
